@@ -1,31 +1,18 @@
-﻿using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
-using System.Text;
-using System;
-
-class Solution
+﻿public class Solution
 {
     // Complete the rotLeft function below.
-    public int[] rotLeft(int[] a, int d)
+    // to-do : Left rotation by 'd' indexes is the same 
+    // as right rotation by len - d indexes 
+    // Index of new array = [i + (len - d)] mod len
+    public int[] LeftRotation(int[] a, int d)
     {
-        // declare new array
-        int[] b = new int[a.Length];
-        // for indexes o to len-1     
-        for (int i = 0; i < b.Length; i++)
+        int len = a.Length;
+        int[] b = new int[len];
+        int right_rot = len - d;
+        for (int i = 0; i < len; i++)
         {
-            if (b.Length - i - 1 < d)
-                b[i] = a[a.Length - d - i];
-            else
-                b[i] = a[i + d];
+            int b_index = (i + right_rot) % len;
+            b[b_index] = a[i];
         }
         return b;
     }
