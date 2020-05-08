@@ -26,7 +26,7 @@ public class Solution
             this.next = null;
         }
     }
-    public static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position)
+    public SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position)
     {
         int counter = 0;
         SinglyLinkedListNode current = head;
@@ -52,6 +52,30 @@ public class Solution
             current = current.next;
         }
         return head;
+    }
+    public int alternatingCharacters(string s)
+    {
+        int len = s.Length;
+        int deletes = 0;
+        for (int i = 0; i < len - 1; i++)
+        {
+            int j = i + 1;
+            for (; j < len; j++)
+            {
+                if (s[i] == s[j])
+                {
+                    deletes++;
+                }
+                else
+                {
+                    i = j - 1;
+                    break;
+                }
+            }
+            if (j == len)
+                break;
+        }
+        return deletes;
     }
 
 }
